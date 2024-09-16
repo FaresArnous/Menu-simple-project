@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Oleo+Script:wght@700&family=Quicksand:wght@300;500;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div id="page-logo"><a href="index.html">Branch Bots</a></div>
+    </header>
+    <main>
+      <div>
+        <button id="sub-btn">submit</button>
+      </div>
+      <div id="contaier">
+        <ul>
+          <li class="item">
+            <img src="Images/Turkish-Coffee.jpg" alt="Turkish-Coffee" />
+            <div>
+              <h2>Turkish coffee</h2>
+            </div>
+            <div class="quantity-controls">
+              <button onclick="updateQuantity('Turkish Coffee', -1)">-</button>
+              <input
+                type="text"
+                id="Turkish-Coffee-quantity"
+                value="0"
+                readonly />
+              <button onclick="updateQuantity('Turkish Coffee', 1)">+</button>
+            </div>
+          </li>
+
+          <li class="item">
+            <img src="Images/Americano.jpg" alt="Americano" />
+            <div>
+              <h2>Americano</h2>
+            </div>
+            <div class="quantity-controls">
+              <button onclick="updateQuantity('Americano', -1)">-</button>
+              <input type="text" id="Americano-quantity" value="0" readonly />
+              <button onclick="updateQuantity('Americano', 1)">+</button>
+            </div>
+          </li>
+
+          <li class="item">
+            <img src="Images/Tea.jpg" alt="Americano" />
+            <div>
+              <h2>Tea</h2>
+            </div>
+            <div class="quantity-controls">
+              <button onclick="updateQuantity('Tea', -1)">-</button>
+              <input type="text" id="Tea-quantity" value="0" readonly />
+              <button onclick="updateQuantity('Tea', 1)">+</button>
+            </div>
+          </li>
+
+          <li class="item">
+            <img src="Images/water.jpg" alt="Water" />
+            <div>
+              <h2>Water</h2>
+            </div>
+            <div class="quantity-controls">
+              <button onclick="updateQuantity('Water', -1)">-</button>
+              <input type="text" id="Water-quantity" value="0" readonly />
+              <button onclick="updateQuantity('Water', 1)">+</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>
