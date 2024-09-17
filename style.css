@@ -32,7 +32,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: 100%;
 }
 
@@ -69,26 +68,28 @@ h2 {
 .quantity-controls {
   padding: 14px;
 }
-
 #sub-btn {
-  margin: 0 auto;
   position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
 }
-
 #sub-btn button {
   font-weight: bold;
-  text-transform: uppercase;
   color: white;
+  font-family: "Raleway", sans-serif;
+  width: 5rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 2rem 0;
+  padding: 0.65rem 0;
   background-color: rgb(115, 95, 227);
-  padding: 0.5rem 1.5rem;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 10px;
 }
 
 #sub-btn button:hover {
-  background-color: rgb(74, 62, 145);
+  background-color: rgb(79, 65, 157);
 }
 
 footer {
@@ -112,6 +113,9 @@ footer {
     height: auto;
     display: block;
     text-align: center;
+  }
+  header a {
+    font-size: 2rem;
   }
 
   header div {
