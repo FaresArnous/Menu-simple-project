@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&family=Oleo+Script:wght@700&family=Quicksand:wght@300;500;700&display=swap"
       rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
   </head>
   <body>
     <header>
@@ -26,13 +26,9 @@
               <h2>Turkish coffee</h2>
             </div>
             <div class="quantity-controls">
-              <button onclick="updateQuantity('Turkish Coffee', -1)">-</button>
-              <input
-                type="text"
-                id="Turkish-Coffee-quantity"
-                value="0"
-                readonly />
-              <button onclick="updateQuantity('Turkish Coffee', 1)">+</button>
+              <button class="decrease" data-item="Turkish Coffee">-</button>
+              <input type="text" id="Turkish-Coffee-quantity" value="0" />
+              <button class="increase" data-item="Turkish-Coffee">+</button>
             </div>
           </li>
 
@@ -42,9 +38,9 @@
               <h2>Americano</h2>
             </div>
             <div class="quantity-controls">
-              <button onclick="updateQuantity('Americano', -1)">-</button>
-              <input type="text" id="Americano-quantity" value="0" readonly />
-              <button onclick="updateQuantity('Americano', 1)">+</button>
+              <button class="decrease" data-item="Americano">-</button>
+              <input type="text" id="Americano-quantity" value="0" />
+              <button class="increase" data-item="Americano">+</button>
             </div>
           </li>
 
@@ -54,9 +50,9 @@
               <h2>Tea</h2>
             </div>
             <div class="quantity-controls">
-              <button onclick="updateQuantity('Tea', -1)">-</button>
-              <input type="text" id="Tea-quantity" value="0" readonly />
-              <button onclick="updateQuantity('Tea', 1)">+</button>
+              <button class="decrease" data-item="Tea">-</button>
+              <input type="text" id="Tea-quantity" value="0" />
+              <button class="increase" data-item="Tea">+</button>
             </div>
           </li>
 
@@ -66,9 +62,9 @@
               <h2>Water</h2>
             </div>
             <div class="quantity-controls">
-              <button onclick="updateQuantity('Water', -1)">-</button>
-              <input type="text" id="Water-quantity" value="0" readonly />
-              <button onclick="updateQuantity('Water', 1)">+</button>
+              <button class="decrease" data-item="Water">-</button>
+              <input type="text" id="Water-quantity" value="0" />
+              <button class="increase" data-item="Water">+</button>
             </div>
           </li>
         </ul>

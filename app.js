@@ -1,12 +1,26 @@
-function updateQuantity(itemName, change) {
-  const itemId = itemName.replace(/\s+/g, "-") + "quantity";
-  const inputField = document.getElementById(itemId);
-  if (inputField) {
-    let currentQuantity = parseInt(inputField.value, 10);
-    let newQuantity = currentQuantity + change;
-    if (newQuantity < 0) {
-      newQuantity = 0;
-    }
-    inputField.value = newQuantity;
+document.addEventListener("DOMContentLoaded", () => {
+  const decreaseButtons = document.querySelectorAll(".decrease");
+  const increaseButtons = document.querySelectorAll(".increase");
+
+  function updateQuantity(itemName, change) {
+    const formattedId = itemName.replace(/\s+/g, "-");
+    const inputeElement = document.getElementById(`${formattedId}-quantity`);
+
+    let currentValue = parseInt(inputeElement.value, 10);
+
+    currentValue += change;
+    inputeElement.value = Math.max(currentValue, 0);
   }
-}
+  decreaseButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const itemName = button.getAttribute("data-item");
+      updateQuantity(itemName, -1);
+    });
+  });
+  increaseButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const itemName = button.getAttribute("data-item");
+      updateQuantity(itemName, 1);
+    });
+  });
+});
