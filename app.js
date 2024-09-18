@@ -6,20 +6,29 @@ document.addEventListener("DOMContentLoaded", () => {
   let successMessage = "Successfully Submitted!";
 
   let toasterContainer = document.createElement("div");
-  toasterContainer.id = "#toasterContainer";
+  toasterContainer.id = "toasterContainer";
 
   document.body.appendChild(toasterContainer);
 
-  function showToaster(message) {
+  function showToaster(message, type) {
     let toaster = document.createElement("div");
     toaster.classList.add("toaster");
+
+    if (type === "warning") {
+      toaster.style.backgroundColor = "rgb(255, 204, 102)";
+      toaster.style.borderLeft = "solid 5px rgb(255, 165, 0)";
+      toaster.style.color = "rgb(255, 69, 0)";
+    } else {
+      toaster.style.backgroundColor = "rgb(183, 235, 183)";
+      toaster.style.borderLeft = " solid 5px rgb(58, 238, 58)";
+      toaster.style.color = "rgb(48, 239, 48)";
+    }
 
     let messageElem = document.createElement("div");
     messageElem.classList.add("message");
     messageElem.innerHTML = message;
 
     toaster.appendChild(messageElem);
-
     toasterContainer.appendChild(toaster);
 
     setTimeout(() => {
@@ -33,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (inputElement) {
       let currentValue = parseInt(inputElement.value, 10);
-
       currentValue += change;
       inputElement.value = Math.max(currentValue, 0);
     } else {
@@ -80,6 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     localStorage.setItem("order", JSON.stringify(order));
-    showToaster(successMessage);
+
+    // Show a single toast based on whether the order is empty or not
+    if (Object.keys(order).length > 0) {
+      showToaster(successMessage, "success");
+    } else {
+      showToaster("You need to order something first", "warning");
+    }
   });
 });
