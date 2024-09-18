@@ -3,6 +3,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const increaseButtons = document.querySelectorAll(".increase");
   const submitButton = document.querySelector("#sub-btn button");
 
+  let successMessage = "Successfully Submitted!";
+
+  let toasterContainer = document.createElement("div");
+  toasterContainer.id = "#toasterContainer";
+
+  document.body.appendChild(toasterContainer);
+
+  function showToaster(message) {
+    let toaster = document.createElement("div");
+    toaster.classList.add("toaster");
+
+    let messageElem = document.createElement("div");
+    messageElem.classList.add("message");
+    messageElem.innerHTML = message;
+
+    toaster.appendChild(messageElem);
+
+    toasterContainer.appendChild(toaster);
+
+    setTimeout(() => {
+      toaster.remove();
+    }, 4000);
+  }
+
   function updateQuantity(itemName, change) {
     const formattedId = itemName.replace(/\s+/g, "-");
     const inputElement = document.getElementById(`${formattedId}-quantity`);
@@ -56,9 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     localStorage.setItem("order", JSON.stringify(order));
-
-    toastr.success("Order submitted successfully!");
-
-    console.log("Order Submitted: ", order);
+    showToaster(successMessage);
   });
 });

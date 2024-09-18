@@ -94,12 +94,30 @@ h2 {
   background-color: rgb(57, 47, 110);
 }
 
-footer {
-  height: 3.3rem;
-  background-color: rgb(115, 95, 227);
-  margin-top: 0.2rem;
-  width: 100%;
-  position: relative;
+#toasterContainer {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px;
+  z-index: 1000;
+}
+.toaster {
+  color: white;
+  width: 300px;
+  background-color: rgb(147, 222, 147);
+  font-weight: 500px;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: forwards 4s ease-out;
 }
 
 @media (max-width: 48rem) {
@@ -122,12 +140,5 @@ footer {
 
   header div {
     font-size: 1.2rem;
-  }
-  footer {
-    height: auto;
-    padding: 1rem;
-    text-align: center;
-    font-size: 0.9rem;
-    margin-top: 1rem;
   }
 }
