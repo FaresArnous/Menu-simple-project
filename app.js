@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     localStorage.setItem("order", JSON.stringify(order));
 
-    alert("Order submitted!");
+    toastr.success("Order submitted successfully!");
 
     console.log("Order Submitted: ", order);
   });
