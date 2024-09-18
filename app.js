@@ -5,19 +5,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateQuantity(itemName, change) {
     const formattedId = itemName.replace(/\s+/g, "-");
-    const inputeElement = document.getElementById(`${formattedId}-quantity`);
+    const inputElement = document.getElementById(`${formattedId}-quantity`);
 
-    let currentValue = parseInt(inputeElement.value, 10);
+    if (inputElement) {
+      let currentValue = parseInt(inputElement.value, 10);
 
-    currentValue += change;
-    inputeElement.value = Math.max(currentValue, 0);
+      currentValue += change;
+      inputElement.value = Math.max(currentValue, 0);
+    } else {
+      console.error(
+        `Input element with ID '${formattedId}-quantity' not found.`
+      );
+    }
   }
+
   decreaseButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const itemName = button.getAttribute("data-item");
       updateQuantity(itemName, -1);
     });
   });
+
   increaseButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const itemName = button.getAttribute("data-item");
@@ -32,10 +40,18 @@ document.addEventListener("DOMContentLoaded", () => {
     items.forEach((item) => {
       const itemName = item.querySelector("h2").textContent;
       const formattedId = itemName.replace(/\s+/g, "-");
-      const quantity = document.getElementById(`${formattedId}-quantity`).value;
+      const quantityElement = document.getElementById(
+        `${formattedId}-quantity`
+      );
 
-      if (quantity > 0) {
-        order[itemName] = quantity;
+      if (quantityElement) {
+        const quantity = quantityElement.value;
+
+        if (quantity > 0) {
+          order[itemName] = quantity;
+        }
+      } else {
+        console.error(`Quantity input element for '${itemName}' not found.`);
       }
     });
 
