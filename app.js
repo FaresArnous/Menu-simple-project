@@ -88,12 +88,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     localStorage.setItem("order", JSON.stringify(order));
+    console.log("Order:", order);
 
-    // Show a single toast based on whether the order is empty or not
     if (Object.keys(order).length > 0) {
       showToaster(successMessage, "success");
     } else {
       showToaster("You need to order something first", "warning");
     }
+
+    items.forEach((item) => {
+      const itemName = item.querySelector("h2").textContent;
+      const formattedId = itemName.replace(/\s+/g, "-");
+      const quantityElement = document.getElementById(
+        `${formattedId}-quantity`
+      );
+
+      if (quantityElement) {
+        quantityElement.value = 0;
+      }
+    });
   });
 });
