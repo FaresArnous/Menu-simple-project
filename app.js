@@ -87,11 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    localStorage.setItem("order", JSON.stringify(order));
-    console.log("Order:", order);
-
     if (Object.keys(order).length > 0) {
       showToaster(successMessage, "success");
+      localStorage.setItem("order", JSON.stringify(order));
+      console.log("Order:", order);
     } else {
       showToaster("You need to order something first", "warning");
     }
