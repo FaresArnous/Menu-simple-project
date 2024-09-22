@@ -3,15 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const increaseButtons = document.querySelectorAll(".increase");
   const submitButton = document.querySelector("#sub-btn button");
 
-  let successMessage = "Successfully Submitted!";
-
-  let toasterContainer = document.createElement("div");
+  const toasterContainer = document.createElement("div");
   toasterContainer.id = "toasterContainer";
-
   document.body.appendChild(toasterContainer);
 
   function showToaster(message, type) {
-    let toaster = document.createElement("div");
+    const toaster = document.createElement("div");
     toaster.classList.add("toaster");
 
     if (type === "warning") {
@@ -20,11 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
       toaster.style.color = "rgb(255, 69, 0)";
     } else {
       toaster.style.backgroundColor = "rgb(183, 235, 183)";
-      toaster.style.borderLeft = " solid 5px rgb(58, 238, 58)";
+      toaster.style.borderLeft = "solid 5px rgb(58, 238, 58)";
       toaster.style.color = "rgb(48, 239, 48)";
     }
 
-    let messageElem = document.createElement("div");
+    const messageElem = document.createElement("div");
     messageElem.classList.add("message");
     messageElem.innerHTML = message;
 
@@ -41,9 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputElement = document.getElementById(`${formattedId}-quantity`);
 
     if (inputElement) {
-      let currentValue = parseInt(inputElement.value, 10);
-      currentValue += change;
-      inputElement.value = Math.max(currentValue, 0);
+      let currentValue = parseInt(inputElement.value, 10) || 0;
+      currentValue = Math.max(currentValue + change, 0);
+      inputElement.value = currentValue;
     } else {
       console.error(
         `Input element with ID '${formattedId}-quantity' not found.`
@@ -77,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       if (quantityElement) {
-        const quantity = quantityElement.value;
+        const quantity = parseInt(quantityElement.value, 10) || 0;
 
         if (quantity > 0) {
           order[itemName] = quantity;
@@ -88,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (Object.keys(order).length > 0) {
-      showToaster(successMessage, "success");
+      showToaster("Successfully Submitted!", "success");
       localStorage.setItem("order", JSON.stringify(order));
       console.log("Order:", order);
     } else {
